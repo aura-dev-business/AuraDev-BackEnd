@@ -22,4 +22,12 @@ public class ServiceService {
     public ServiceEntity createService(ServiceEntity service) {
         return serviceRepository.save(service);
     }
+
+    public ServiceEntity updateService(Long id, ServiceEntity service) {
+        if (serviceRepository.existsById(id)) {
+            service.setId(id);
+            return serviceRepository.save(service);
+        }
+        throw new RuntimeException("Service not found with id: " + id);
+    }
 }

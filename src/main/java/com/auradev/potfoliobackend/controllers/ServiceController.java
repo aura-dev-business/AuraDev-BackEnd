@@ -26,4 +26,10 @@ public class ServiceController {
     public ServiceEntity createService(@RequestBody ServiceEntity service) {
         return serviceService.createService(service);
     }
+
+    @PutMapping("/{id}")
+    public ServiceEntity updateService(@PathVariable Long id, @RequestBody ServiceEntity service) {
+        return serviceService.updateService(id, service);
+    }
+    
 }
