@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/services")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class ServiceController {
 
     private final ServiceService serviceService;
@@ -25,4 +26,10 @@ public class ServiceController {
     public ServiceEntity createService(@RequestBody ServiceEntity service) {
         return serviceService.createService(service);
     }
+
+    @PutMapping("/{id}")
+    public ServiceEntity updateService(@PathVariable Long id, @RequestBody ServiceEntity service) {
+        return serviceService.updateService(id, service);
+    }
+    
 }
