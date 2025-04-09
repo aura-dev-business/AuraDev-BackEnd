@@ -30,4 +30,8 @@ public class ServiceService {
         }
         throw new RuntimeException("Service not found with id: " + id);
     }
+
+    public void deleteService(Long id) {
+        serviceRepository.deleteById(id);
+    }
 }
