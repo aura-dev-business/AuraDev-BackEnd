@@ -2,6 +2,7 @@ package com.auradev.potfoliobackend.models;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "service_entity") // Explicitly define the table name
@@ -16,6 +17,9 @@ public class ServiceEntity {
     private String description;
 
     private String imageUrl;
+
+    @ElementCollection
+    private List<String> features;
 
     private LocalDateTime createdAt;
 
@@ -50,6 +54,14 @@ public class ServiceEntity {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<String> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(List<String> features) {
+        this.features = features;
     }
 
     public LocalDateTime getCreatedAt() {

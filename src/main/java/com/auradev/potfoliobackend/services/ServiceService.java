@@ -8,7 +8,6 @@ import java.util.List;
 
 @Service
 public class ServiceService {
-
     private final ServiceRepository serviceRepository;
 
     public ServiceService(ServiceRepository serviceRepository) {
