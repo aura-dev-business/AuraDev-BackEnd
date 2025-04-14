@@ -9,10 +9,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("https://auradev.in", "https://www.auradev.in") // Ensure both domains are included
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*")
-                .allowCredentials(true);
+        registry.addMapping("/api/**") // Apply to all endpoints under /api/
+                .allowedOrigins("https://www.auradev.in")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allowed HTTP methods
+                .allowedHeaders("*") // Allowed headers
+                .allowCredentials(true); // If you're using cookies or authorization headers
     }
 }
