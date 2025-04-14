@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/services")
-//@CrossOrigin(origins = "https://www.auradev.in", allowCredentials = "true")
+@CrossOrigin(origins = "https://www.auradev.in", allowCredentials = "true")
 public class ServiceController {
 
     private final ServiceService serviceService;
