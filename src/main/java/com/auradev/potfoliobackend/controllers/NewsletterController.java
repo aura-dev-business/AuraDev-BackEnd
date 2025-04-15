@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/newsletter")
-@CrossOrigin(origins = "http://localhost:5173") // Adjust the origin as per your frontend URL
 public class NewsletterController {
+
     private final NewsletterService newsletterService;
 
     public NewsletterController(NewsletterService newsletterService) {
