@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/contact")
-@CrossOrigin(origins = "https://www.auradev.in", allowCredentials = "true") // Adjust the origin as per your frontend URL
 public class ContactController {
+
     private final ContactService contactService;
 
     public ContactController(ContactService contactService) {
