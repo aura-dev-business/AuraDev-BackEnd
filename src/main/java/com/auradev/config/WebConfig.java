@@ -1,23 +1,18 @@
-package com.auradev.potfoliobackend.config;
+package com.auradev.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.lang.NonNull;
-import org.springframework.beans.factory.annotation.Value;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${frontend.origin}") // 👈 From your .env or application.properties
-    private String frontendOrigin;
-
     @Override
-    public void addCorsMappings(@NonNull CorsRegistry registry) {
-        registry.addMapping("/api/**")
-            .allowedOrigins(frontendOrigin)
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-            .allowedHeaders("*")
-            .allowCredentials(true);
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("https://www.auradev.in") // React default port
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
-}
+} 
