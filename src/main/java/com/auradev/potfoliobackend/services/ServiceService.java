@@ -33,4 +33,9 @@ public class ServiceService {
     public void deleteService(Long id) {
         serviceRepository.deleteById(id);
     }
+
+    public ServiceEntity getServiceById(Long id) {
+        return serviceRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Service not found with id: " + id));
+    }
 }
