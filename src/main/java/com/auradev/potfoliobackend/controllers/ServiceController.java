@@ -21,6 +21,11 @@ public class ServiceController {
         return serviceService.getAllServices();
     }
 
+    @GetMapping("/{id}")
+    public ServiceEntity getServiceById(@PathVariable Long id) {
+        return serviceService.getServiceById(id);
+    }
+
     @PostMapping
     public ServiceEntity createService(@RequestBody ServiceEntity service) {
         return serviceService.createService(service);
