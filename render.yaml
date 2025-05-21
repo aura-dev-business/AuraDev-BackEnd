@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: aura-dev-backend
+    env: java
+    buildCommand: ./mvnw package
+    startCommand: java -jar target/*.jar
+    region: oregon
+    plan: free
+    buildEnvVars:
+      JAVA_VERSION: 17
