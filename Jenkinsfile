@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Clone') {
       steps {
-        git 'https://github.com/aura-dev-business/AuraDev-BackEnd.git'
+        git branch: 'latest/deploy', url: 'https://github.com/aura-dev-business/AuraDev-BackEnd.git'
       }
     }
 
