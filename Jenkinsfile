@@ -1,28 +1,36 @@
 pipeline {
-  agent any
+    agent any
 
-  tools {
-    jdk 'JDK17'
-    maven 'Maven3'
-  }
-
-  stages {
-    stage('Clone') {
-      steps {
-        git branch: 'latest/deploy', url: 'https://github.com/aura-dev-business/AuraDev-BackEnd.git'
-      }
+    environment {
+        DATABASE_URL = credentials('DATABASE_URL')     // Use Jenkins Credentials
+        PGUSER = credentials('PGUSER')
+        PGPASSWORD = credentials('PGPASSWORD')
+        FRONTEND_ORIGIN = credentials('FRONTEND_ORIGIN')
     }
 
-    stage('Build') {
-      steps {
-        sh 'mvn clean package -DskipTests'
-      }
-    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/aura-dev-business/AuraDev-BackEnd.git'
+            }
+        }
 
-    stage('Run') {
-  steps {
-    sh 'nohup java -jar target/*.jar --server.port=8081 > log.txt 2>&1 &'
-      }
+        stage('Build') {
+            steps {
+                sh './mvnw clean package -DskipTests'
+            }
+        }
+
+        stage('Kill Previous') {
+            steps {
+                sh 'fuser -k 8080/tcp || true'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'nohup java -jar target/*.jar > app.log 2>&1 &'
+            }
+        }
     }
-  }
 }
